@@ -20,19 +20,19 @@ stringChecker();
 
 function compareChoice() {
    if (str1 === str2) {
-        console.log(`Player:${str1} << >> Computer:${str2} Tie!`);
+        alert(`Player:${str1} << >> Computer:${str2} Tie!`);
     } else if (str2 === "rock" && str1 === "paper") {
-        console.log(`Player:${str1} << >> Computer:${str2} Player wins!`)
+        alert(`Player:${str1} << >> Computer:${str2} Player wins!`)
     } else if (str2 === "paper" && str1 === "rock") {
-        console.log(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
+        alert(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
     } else if (str2 === "paper" && str1 === "scissors") {
-        console.log(`Player:${str1} << >> Computer:${str2} Player wins!`)
+        alert(`Player:${str1} << >> Computer:${str2} Player wins!`)
     } else if (str2 === "scissors" && str1 === "paper") {
-        console.log(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
+        alert(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
     } else if (str2 === "scissors" && str1 === "rock") {
-        console.log(`Player:${str1} << >> Computer:${str2} Player wins!`)
+        alert(`Player:${str1} << >> Computer:${str2} Player wins!`)
     } else {
-        console.log(`Computer:${str2} << >> Player:${str1} Computer wins!`)
+        alert(`Computer:${str2} << >> Player:${str1} Computer wins!`);
     }
 }
 compareChoice();
