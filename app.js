@@ -40,7 +40,7 @@ compareChoice();
 function stringChecker() {
     let letters = /^[A-Za-z]+$/;
     while (!str1.match(letters)){
-       str1 = prompt("Try again!");
+       str1 = prompt("Please use only letters!");
     } 
    return true;
 };
