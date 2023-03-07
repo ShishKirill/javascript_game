@@ -10,25 +10,37 @@ function computerPlay() {
 }
 computerPlay();
 
-const computerChoice = computerPlay;
-const playerChoice = prompt("Rock, Paper or Scissors?");
+let computerChoice = computerPlay;
+let str2=computerChoice.toLowerCase();
+
+let playerChoice = prompt("Rock, Paper or Scissors?");
+let str1 = playerChoice.toLowerCase();
 
 function compareChoice() {
-    if (computerChoice === playerChoice) {
-        console.log(`Player:${playerChoice} << >> Computer:${computerChoice} Tie!`);
-    } else if (computerChoice === "Rock" && playerChoice === "Paper") {
-        console.log(`Player:${playerChoice} << >> Computer:${computerChoice} Player wins!`)
-    } else if (computerChoice === "Paper" && playerChoice === "Rock") {
-        console.log(`Computer:${computerChoice} <<>> Player:${playerChoice} Computer wins!`)
-    } else if (computerChoice === "Paper" && playerChoice === "Scissors") {
-        console.log(`Player:${playerChoice} << >> Computer:${computerChoice} Player wins!`)
-    } else if (computerChoice === "Scissors" && playerChoice === "Paper") {
-        console.log(`Computer:${computerChoice} <<>> Player:${playerChoice} Computer wins!`)
-    } else if (computerChoice === "Scissors" && playerChoice === "Rock") {
-        console.log(`Player:${playerChoice} << >> Computer:${computerChoice} Player wins!`)
+   if (str1 === str2) {
+        console.log(`Player:${str1} << >> Computer:${str2} Tie!`);
+    } else if (str2 === "rock" && str1 === "paper") {
+        console.log(`Player:${str1} << >> Computer:${str2} Player wins!`)
+    } else if (str2 === "paper" && str1 === "rock") {
+        console.log(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
+    } else if (str2 === "paper" && str1 === "scissors") {
+        console.log(`Player:${str1} << >> Computer:${str2} Player wins!`)
+    } else if (str2 === "scissors" && str1 === "paper") {
+        console.log(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
+    } else if (str2 === "scissors" && str1 === "rock") {
+        console.log(`Player:${str1} << >> Computer:${str2} Player wins!`)
     } else {
-        console.log(`Computer:${computerChoice} << >> Player:${playerChoice}Computer wins!`)
+        console.log(`Computer:${str2} << >> Player:${str1} Computer wins!`)
     }
+    stringChecker();
 }
-
 compareChoice();
+
+function stringChecker() {
+    let letters = /^[A-Za-z]+$/;
+    if (str1.match(letters)) {
+        return true;
+    } else {
+        return false;
+    }
+};
