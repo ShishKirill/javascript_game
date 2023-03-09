@@ -8,6 +8,8 @@ function computerPlay() {
         computerPlay = "Scissors";
     }
 }
+let computerPoints=0;
+let playerPoints=0;
 computerPlay();
 
 let computerChoice = computerPlay;
