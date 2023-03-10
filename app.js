@@ -28,27 +28,18 @@ function computerPlay() {
 
 function compareChoice() {
     if (str1 === str2) {
-       alert(`Player:${str1} << >> Computer:${str2} Tie!`);
-    } else if (str2 === "rock" && str1 === "paper") {
-        alert(`Player:${str1} << >> Computer:${str2} Player wins!`)
-        playerPoints++;
-    } else if (str2 === "paper" && str1 === "rock") {
-        alert(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
-        computerPoints++;
-    } else if (str2 === "paper" && str1 === "scissors") {
-        alert(`Player:${str1} << >> Computer:${str2} Player wins!`)
-        playerPoints++;
-    } else if (str2 === "scissors" && str1 === "paper") {
-        alert(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
-        computerPoints++;
-    } else if (str2 === "scissors" && str1 === "rock") {
-        alert(`Player:${str1} << >> Computer:${str2} Player wins!`)
-        playerPoints++;
-    } else {
-        alert(`Computer:${str2} << >> Player:${str1} Computer wins!`);
-        computerPoints++;
-    }
-};
+         alert(`Player:${str1} << >> Computer:${str2} Tie!`);
+     } else if (str2 === "rock" && str1 === "paper" || str2 === "paper" && str1 === "scissors" || str2 === "scissors" && str1 === "rock") {
+         alert(`Player:${str1} << >> Computer:${str2} Player wins!`)
+         playerPoints++;
+     } else if (str2 === "paper" && str1 === "rock" || str2 === "scissors" && str1 === "paper" || str2 === "rock" && str1 === "scissors") {
+         alert(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
+         computerPoints++;
+     } else {
+         alert("Errorr occured. Error report sent.")
+     }
+ };
+  
 function getCorrectWord(expectedWords) {
     while (true) {
     // Prompt the user to enter a word
