@@ -1,6 +1,7 @@
 let computerPoints = 0;
 let playerPoints = 0;
-while ((computerPoints <= 5) && (playerPoints <= 5)) {
+let roundNumber = 0;
+while (roundNumber<5) {
 
     computerPlay();
 
@@ -66,7 +67,8 @@ while ((computerPoints <= 5) && (playerPoints <= 5)) {
             }
         }
     }
+    roundNumber++;
 };
-if (computerPoints >= 5) alert(`Computer collected 5 points, you lost :(`)
+if (computerPoints > playerPoints) alert(`Computer collected 5 points, you lost :(`)
 else alert(`You Won!! :)`)
 
