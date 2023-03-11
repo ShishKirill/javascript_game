@@ -104,7 +104,8 @@ function getNull (){
 
 
 function game() {
-
+    playerChoice = "";
+        
     alert(`Hello! You are about to play the game Rock, Paper Scissors. These are the rules:
     1. You choose rock, paper or scissors. 
     2. The computer also chooses either rock, paper or scissors.
