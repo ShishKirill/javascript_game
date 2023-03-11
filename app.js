@@ -1,69 +1,125 @@
-let computerPoints = 0;
+let expectedWords = ["rock", "paper", "scissors"]
+let gameRound = 0;
 let playerPoints = 0;
-let roundNumber = 0;
-while (roundNumber<5) {
+let computerPoints = 0;
+let playerChoice = "";
+let computerChoice = "";
+let playAgain = "";
 
-    computerPlay();
+game();
 
-    let computerChoice = computerPlay;
-    let str2 = computerChoice.toLowerCase();
+function getChoices (){
+        playerChoice = prompt("Rock, paper or scissors?");
+        computerChoice = expectedWords[Math.floor(expectedWords.length * Math.random())];
+}
 
-    let playerChoice = alert("Rock, Paper or Scissors?");
-    let str1 = playerChoice;
-
-    const expectedWords = ['rock', 'paper', 'scissors'];
-
-    getCorrectWord(expectedWords);
-    compareChoice();
-
-    function computerPlay() {
-        computerPlay = Math.random();
-        if (computerPlay < 0.4) {
-            computerPlay = "Rock";
-        } else if (computerPlay < 0.8) {
-            computerPlay = "Paper";
-        } else {
-            computerPlay = "Scissors";
-        }
-    };
-
-    function compareChoice() {
-    str1 = str1.toLowerCase();
-    str2 = str2.toLowerCase();
-
-    if (str1 === str2) {
-         alert(`Player:${str1} << >> Computer:${str2} Tie!`);
-     } else if (str2 === "rock" && str1 === "paper" || str2 === "paper" && str1 === "scissors" || str2 === "scissors" && str1 === "rock") {
-         alert(`Player:${str1} << >> Computer:${str2} Player wins!`)
-         playerPoints++;
-     } else if (str2 === "paper" && str1 === "rock" || str2 === "scissors" && str1 === "paper" || str2 === "rock" && str1 === "scissors") {
-         alert(`Computer:${str2} <<>> Player:${str1} Computer wins!`)
-         computerPoints++;
-     } else {
-         alert("Errorr occured. Error report sent.")
-     }
- };
-    
-    function getCorrectWord(expectedWords) {
-        while (true) {
-            // Prompt the user to enter a word
-            str1 = prompt('Please enter one of the following words: Rock, paper or scissors!');
-            // Remove any non-letter characters from the entered word
-            str1 = str1.replace(/[^a-zA-Z]/g, '');
-            // Convert both words to lowercase to make it case-insensitive
-            const lowerCaseUserInput = str1.toLowerCase();
-            // Check if the entered word matches one of the expected words
-            if (expectedWords.some(word => word.toLowerCase() === lowerCaseUserInput)) {
-                console.log(`${str1.toLowerCase()}  Yes!!!`)
-                return str1;
-            } else {
-                alert('Incorrect word entered. Please try again.');
-            }
-        }
+function fixUserChoice() {
+    if(playerChoice != null) {
+        playerChoice = (playerChoice.replace(/[^a-zA-Z]/g, '')).toLowerCase();
+    } else {
+        getNull();
     }
-    roundNumber++;
-};
-if (computerPoints > playerPoints) alert(`Computer won, you lost :(`)
-else if(playerPoints>computerPoints) alert(`You Won!! :)`)
-else alert(`There is a tie`)
+}
 
+function pointScore () {
+    if (playerChoice === computerChoice) {
+        console.log(`It's a tie!`);
+    } else if (playerChoice === "paper" && computerChoice === "rock" || playerChoice === "scissors" && computerChoice === "paper" || playerChoice === "rock" && computerChoice === "scissors") {
+        console.log(`You won!`);
+        playerPoints++;
+    } else if (playerChoice === "rock" && computerChoice === "paper" || playerChoice === "paper" && computerChoice === "scissors" || playerChoice === "scissors" && computerChoice === "rock") {
+        console.log(`Computer won!`);
+        computerPoints++;;
+    } else if( playerChoice == null){
+        getNull();
+    } else {
+        alert ("Please choose again.");
+        getChoices();
+    }
+}
+
+function displayConsoleScore () {
+    if (playerChoice != null){
+       console.log(`You: ${playerChoice} -- Computer: ${computerChoice}
+        You: ${playerPoints} -- Computer: ${computerPoints}`); 
+    }     
+}
+
+function displayAlertScore (){
+    if (playerChoice != null) {
+        alert(`You: ${playerChoice} -- Computer: ${computerChoice}
+        You: ${playerPoints} -- Computer: ${computerPoints}`
+    )}
+}
+
+
+function getWhoWon (){
+    if (playerPoints > computerPoints && playerChoice != null) {
+        console.log(`You won the game!`);
+        alert("Well done! You won!");
+        
+    } else if (computerPoints > playerPoints && playerChoice != null) {
+        console.log(`Computer won the game. :(`);
+        alert("Oh no, the computer won. :(");
+    } else if ( playerChoice == null) {
+        getNull();
+    } else {
+        console.log(`It's a tie!`);
+        alert("It's a tie!");
+    }
+}
+
+function getPlayAgain(){
+    playAgain = prompt("Do you want to play again? Yes or no?");
+    getPlayAgainValue ();
+}
+
+
+function getPlayAgainValue () {
+    fixPlayAgain();
+    if (playAgain === "yes") {
+        game();
+    } else if (playAgain === "no") {
+        console.log("So sad to see you go!");
+        alert("I'll get you next time!");
+    } else if (playerChoice === null) {
+        getNull();
+    } else {
+        alert("Please type that again.");
+    }
+}
+
+function fixPlayAgain () {
+    if (playAgain != null) {
+        playAgain = (playAgain.replace(/[^a-zA-Z]/g, '').toLowerCase());
+    } else {
+        getNull();
+    }
+}
+
+function getNull (){
+    return playerChoice = null;
+}
+
+
+function game() {
+
+    alert(`Hello! You are about to play the game Rock, Paper Scissors. These are the rules:
+    1. You choose rock, paper or scissors. 
+    2. The computer also chooses either rock, paper or scissors.
+    3. Rock beats scissors, paper beats rock, and scissors beats paper.
+    4. We will play for 5 rounds and the player with the most points wins!`)
+
+    for (i = 0; i < 5 && playerChoice != null; i++){
+        console.log(`Round ${i+1}`),
+        getChoices();
+        fixUserChoice();
+        pointScore();
+        displayConsoleScore(); 
+        displayAlertScore()
+    };
+    getWhoWon();
+    getPlayAgain();
+    playerPoints = 0;
+    computerPoints = 0;
+}
