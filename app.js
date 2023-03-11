@@ -11,6 +11,7 @@ game();
 function getChoices (){
         playerChoice = prompt("Rock, paper or scissors?");
         computerChoice = expectedWords[Math.floor(expectedWords.length * Math.random())];
+        pointScore();
 }
 
 function fixUserChoice() {
@@ -114,7 +115,6 @@ function game() {
         console.log(`Round ${i+1}`),
         getChoices();
         fixUserChoice();
-        pointScore();
         displayConsoleScore(); 
         displayAlertScore()
     };
