@@ -64,5 +64,6 @@ while (roundNumber<5) {
     roundNumber++;
 };
 if (computerPoints > playerPoints) alert(`Computer won, you lost :(`)
-else alert(`You Won!! :)`)
+else if(playerPoints>computerPoints) alert(`You Won!! :)`)
+else alert(`There is a tie`)
 
