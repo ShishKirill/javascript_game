@@ -63,6 +63,6 @@ while (roundNumber<5) {
     }
     roundNumber++;
 };
-if (computerPoints > playerPoints) alert(`Computer collected 5 points, you lost :(`)
+if (computerPoints > playerPoints) alert(`Computer won, you lost :(`)
 else alert(`You Won!! :)`)
 
